@@ -18,3 +18,32 @@ docker network rm $(docker network ls -q)
 Удалит ВСЁ:
 
 docker system prune -a --volumes -f
+
+
+workspace/
+│
+├── infra/                        # глобальная инфраструктура
+│   ├── compose.yml
+│   └── .env
+│
+├── apps/                        # все проекты
+│   ├── app1/
+│   │   ├── compose.yml
+│   │   ├── src/
+│   │   └── .env
+│   │
+│   └── app2/
+│       ├── compose.yml
+│       └── src/
+│
+├── storage/
+│   ├── mysql/
+│   ├── postgres/
+│   └── redis/
+│
+├── backup/
+│
+├── scripts/
+│   └── backup.sh
+│
+└── README.md
