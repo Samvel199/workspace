@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+
+  proxy:
+    image: nginxproxy/nginx-proxy
+    container_name: proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - net
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ../storage/mysql:/var/lib/mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+    networks:
+      - net
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: root
+    volumes:
+      - ../storage/postgres:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - net
+
+  redis:
+    image: redis
+    container_name: redis
+    volumes:
+      - ../storage/redis:/data
+    networks:
+      - net
+
+networks:
+  net:
+    name: dev-network
