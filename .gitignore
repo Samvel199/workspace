@@ -1,4 +1,4 @@
-apps/
-backup/
-logs/
-storage/
+apps/*
+backup/*
+logs/*
+storage/*
