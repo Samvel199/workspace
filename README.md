@@ -19,6 +19,14 @@ docker network rm $(docker network ls -q)
 
 docker system prune -a --volumes -f
 
+sudo systemctl stop nginx
+
+sudo lsof -i :80 
+
+docker run --rm --network dev-network cloudflare/cloudflared:latest tunnel --url http://proxy:80
+
+
+
 
 workspace/
 │

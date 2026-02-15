@@ -2,3 +2,4 @@ backup/*
 logs/*
 storage/*
 apps/*
+infra/.env

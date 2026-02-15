@@ -1,7 +1,6 @@
 version: "3.9"
 
 services:
-
   proxy:
     image: nginxproxy/nginx-proxy
     container_name: proxy
